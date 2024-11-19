@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accesso Aree</title>
+  <script>
+    // Gestione credenziali
+    const credentials = {
+      "Area Docenti": {
+        users: [
+          "enrico.dematteis",
+          "alessia.dematteis",
+          "budino.caramello",
+          "piccky.pomodoro",
+          "ananas.pippy",
+          "spinaci.verdi",
+          "gatto.rosa"
+        ],
+        password: "cfp.2024"
+      },
+      "Area Segreteria / Resp. Corso": {
+        users: ["segreteria"],
+        password: "segreteria.2024"
+      },
+      "Area Studenti": {
+        users: [
+          "Stellina Dematteis",
+          "Tartaruga Dematteis",
+          "Yucky Benua",
+          "Lollo Benua",
+          "Leonard Benua",
+          "Sparcky Benua",
+          "Flaffy Dematteis",
+          "Tina Dematteis",
+          "Grigetta Benua",
+          "Luna Dematteis",
+          "Luna Benua",
+          "Kendy Dematteis",
+          "Papero Benua",
+          "Curt Dematteis",
+          "Briciola Dematteis",
+          "Lampo Benua",
+          "Sunny Benua",
+          "Attiglio Dematteis",
+          "Cane Dematteis",
+          "Cane Benua",
+          "Mician Dematteis",
+          "Cicciobello Allabue",
+          "Micheal Temperini",
+          "Cattivo Temperini",
+          "Bambola Rossetti",
+          "Teschio Carottini"
+        ],
+        password: "studenti.2024"
+      },
+      "Area Addetti aule": {
+        users: ["addetto.aule"],
+        password: "aule.2024"
+      },
+      "Area Genitori": {
+        users: ["genitori"],
+        password: "genitori.2024"
+      }
+    };
+
+    function validateLogin() {
+      const area = document.getElementById("area").value;
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (credentials[area]) {
+        const validUsers = credentials[area].users;
+        const validPassword = credentials[area].password;
+
+        if (validUsers.includes(username) && password === validPassword) {
+          alert("Accesso riuscito! Reindirizzamento in corso...");
+          // Reindirizzamento
+          window.location.href = "dashboard.html";
+        } else {
+          alert("Nome utente o password errati. Riprova.");
+        }
+      } else {
+        alert("Seleziona un'area valida.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Portale di Accesso</h1>
+  <label for="area">Seleziona l'area:</label>
+  <select id="area">
+    <option value="">-- Seleziona un'area --</option>
+    <option value="Area Docenti">Area Docenti</option>
+    <option value="Area Segreteria / Resp. Corso">Area Segreteria / Resp. Corso</option>
+    <option value="Area Studenti">Area Studenti</option>
+    <option value="Area Addetti aule">Area Addetti aule</option>
+    <option value="Area Genitori">Area Genitori</option>
+  </select>
+  <br><br>
+  <label for="username">Nome utente:</label>
+  <input type="text" id="username" required>
+  <br><br>
+  <label for="password">Password:</label>
+  <input type="password" id="password" required>
+  <br><br>
+  <button onclick="validateLogin()">Accedi</button>
+</body>
+</html>
